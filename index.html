@@ -26,37 +26,50 @@
 
             font-family: 'Courier New', Courier, monospace; 
             overflow: hidden; /*for scrollingz*/
+        }
 
-            /* PLAY BUTTON STUFF*/
+         /* PLAY BUTTON STUFF*/
+        #play {
 
-             /* PLAY BUTTON STUFF*/
-            #play {
-                position: fixed;
-                bottom: 40px;
-                left: 10%;
-                transform: translateX(-50%);
-            }
-
-            #play-clicky{
-
-            padding: 15px 30px;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: 900;
-            background-color: rgb(51, 102, 68);
-            color: rgb(51, 102, 68);
-            transition: all 0.3s ease;
+                margin-top: 50px;
+                z-index: 100;   /*bring play button to front*/
                 
             }
 
-            #play-clicky.on {
+        #play-clicky{
+
+            padding: 15px 60px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size : 24px;
+            font-weight: 900;
+            background-color: rgb(51, 102, 68);
+            color: rgb(114, 114, 114);
+            cursor: not-allowed;
+            transition: all 0.3s ease;
+        }
+
+        #play-clicky.on {
             background-color: rgb(90, 255, 145);
-            color: rgb(90, 255, 145);
+            color: white;
             cursor: pointer;
             transform: scale(1.1);
             
-            }
+        }
 
-        
+        /* from tutorial video*/
+        .is-played {
+
+            position: fixed !important; 
+            left: 50%;
+            top: 50%;
+            margin: 0;
+            transform: translate(-50%, -50%) scale(2) rotate (0deg) !important;
+            z-index: 1000; /*bring played card to front*/
+            transition: all 0.6s ease cubic-bezier(0.18, 0.89, 0.32, 1.28); 
+        }
+
+         /*GRID AND CARD STUFF//////////////////////*/
+
 
         .grid {
 
@@ -180,34 +193,48 @@
         
     </div>
 
+    <div id="play">
+
+        <button id="play-clicky" disabled>PLAY CARD</button>
+
+    </div>
 
 
+
+    <!-- SCRIPT!!! STUFF HELP ME PLEAAASE!!!!! --> 
     <script>
-    /* I found this script in https://github.com/topics/hover-effects this collection*/
+    /* I found this portion of the script in https://github.com/topics/hover-effects this collection*/
     /*card hover move 3d looking script*/
-    
+        
         const cards = document.querySelectorAll('.card'); /*changed this to match classes*/
 
+        /* my stuff for play card*/
+        const playButton = document.getElementById('play-clicky');
+
+        let selected = null;
+
         cards.forEach(card => {
-        
+        /* CARD TILT STUFF/////////////////////*/
         /*event listener to track mouse movement*/
             card.addEventListener('mousemove', (e) => {
+                    if (card.classList.contains('is-played')) return; /*if card is already played, dont do the hover effect*/
             
-                const rect = card.getBoundingClientRect(); /*script to getg bounding box*/
+                    const rect = card.getBoundingClientRect(); /*script to getg bounding box*/
                 
-                const x = e.clientX - rect.left; 
-                const y = e.clientY - rect.top;  
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
+                    const x = e.clientX - rect.left; 
+                    const y = e.clientY - rect.top;  
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
 
-                /*tilt*/
-                const rotateX = ((y - centerY) / centerY) * -25; 
-                const rotateY = ((x - centerX) / centerX) * 25;
+                    /*tilt*/
+                    const rotateX = ((y - centerY) / centerY) * -25; 
+                    const rotateY = ((x - centerX) / centerX) * 25;
 
-                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.15, 1.15, 1.15)`; /*thank you github for this algorithm*/
+                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.15, 1.15, 1.15)`; /*thank you github for this algorithm*/
                 
-            });
-
+            }
+        );
+            /* reset tilt script*/
             card.addEventListener('mouseleave', () => {
             
                 /*event listener to detect when mouse leaves so that it snaps back 2 normal :3*/
@@ -216,7 +243,51 @@
 
             }
         );
+        
+         /*selection script*/
+         card.addEventListener('click', (e) => {
+           e.preventDefault();    /*prevent default link behavior so the animation can play*/
 
+           /* clear prev*/
+           cards.forEach(c => c.classList.remove('is-played')); 
+
+           /* new selection*/
+           card.classList.add('is-played');
+           selected = card; /*store selected card*/
+
+           /*play! tun on :3333*/
+           card.classList.add('on');
+           playButton.disabled = false;
+         }
+         );
+
+
+
+         /*click da button...*/
+         playButton.addEventListener('click', () => {
+            if (selected) {
+                
+                playButton.disabled = true; /*disable button after click*/
+
+                playButton.classList.remove('on'); 
+
+                grid.style.opacity = '0.3'; /*dim da grid*/
+
+                selected.classList.remove('selected'); 
+                selected.classList.add('is-played'); 
+
+                /*REDIRECT TO YOUTUBE VIDEO AFTER ANIMATION PLAYS SO THERES LIKE A DELAY*/
+                setTimeout(() => {
+                    /*TEMP REDIRECT BUT ITS BETTER THAN NOTHING*/
+                    window.location.href = 'https://www.youtube.com/watch?v=THUxlDJRHtY'; 
+
+                }, 1000); /*delay for animation to play before redirecting*/
+
+            }
+
+         }
+
+        );
         }
 
     );
