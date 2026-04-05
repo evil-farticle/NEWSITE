@@ -26,7 +26,36 @@
 
             font-family: 'Courier New', Courier, monospace; 
             overflow: hidden; /*for scrollingz*/
-        }
+
+            /* PLAY BUTTON STUFF*/
+
+             /* PLAY BUTTON STUFF*/
+            #play {
+                position: fixed;
+                bottom: 40px;
+                left: 10%;
+                transform: translateX(-50%);
+            }
+
+            #play-clicky{
+
+            padding: 15px 30px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 900;
+            background-color: rgb(51, 102, 68);
+            color: rgb(51, 102, 68);
+            transition: all 0.3s ease;
+            }
+
+            #play-clicky.on {
+            background-color: rgb(90, 255, 145);
+            color: rgb(90, 255, 145);
+            cursor: pointer;
+            transform: scale(1.1);
+            
+            }
+
+        
 
         .grid {
 
