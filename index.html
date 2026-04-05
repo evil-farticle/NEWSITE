@@ -15,10 +15,9 @@
         body {
         
             display: flex;
-            flex-direction: column; /*so button is below*/
             justify-content: center;
             align-items: center;
-            min-height: 100vh; 
+            min-height: 100%;
             margin: 0;
 
             /*temp*/
@@ -43,15 +42,27 @@
             font-family: 'Courier New', Courier, monospace;
             font-size : 24px;
             font-weight: 900;
+
+            /*TEMP THIS WILL BE AN IMAGE*/
+
             background-color: rgb(51, 102, 68);
+
+             /*TEMP THIS WILL BE AN IMAGE*/
+
+
             color: rgb(114, 114, 114);
+
             cursor: not-allowed;
             transition: all 0.3s ease;
         }
 
-        
+
         #play-clicky.on {
+
+             /*TEMP THIS WILL BE AN IMAGE*/
             background-color: rgb(90, 255, 145);
+             /*TEMP THIS WILL BE AN IMAGE*/
+
             color: white;
             cursor: pointer;
             transform: scale(1.1);
@@ -93,7 +104,6 @@
             /* ``````````````````````````````````*/
             
             perspective: 1200px; /* give perspective to grid */
-            transition: opacity 0.5s ease;
         }
 
         .card {
@@ -190,7 +200,7 @@
 
 <body>
 <!-- div for grid and card classes for specific cards WHY DOES THIS COMMENT NEED TO BE DIFFEREBt?>!?>!!>--> 
-    <div class="grid"> 
+    <div class="grid" id="card-grid"> 
   
         <a href="#" class="card card-top-left">guhh</a>
         <a href="#" class="card card-top-right">brap</a>
@@ -250,11 +260,15 @@
         card.addEventListener('mouseleave', () => {
             
                 /*event listener to detect when mouse leaves so that it snaps back 2 normal :3*/
-                
-                card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                if (!card.classList.contains('selected')) {
+                    
+                    card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; /* snap back to normal position and size*/
+                }
 
             }
         );
+
+        /*card select script*/
         
         card.addEventListener('click', (e) => {
 
@@ -274,6 +288,7 @@
 
         });
 
+            /*play button script*/
         playButton.addEventListener('click', () => {
 
 
