@@ -15,9 +15,10 @@
         body {
         
             display: flex;
+            flex-direction: column; /*so button is below*/
             justify-content: center;
             align-items: center;
-            min-height: 100%;
+            min-height: 100vh; 
             margin: 0;
 
             /*temp*/
@@ -48,12 +49,20 @@
             transition: all 0.3s ease;
         }
 
+        
         #play-clicky.on {
             background-color: rgb(90, 255, 145);
             color: white;
             cursor: pointer;
             transform: scale(1.1);
             
+        }
+
+        /*selected card lift*/
+        .selected {
+
+            transform: translateY(-30px) scale(1.1) !important;
+            z-index: 50;
         }
 
         /* from tutorial video*/
@@ -63,7 +72,7 @@
             left: 50%;
             top: 50%;
             margin: 0;
-            transform: translate(-50%, -50%) scale(2) rotate (0deg) !important;
+            transform: translate(-50%, -50%) scale(2) rotate(0deg) !important;
             z-index: 1000; /*bring played card to front*/
             transition: all 0.6s ease cubic-bezier(0.18, 0.89, 0.32, 1.28); 
         }
@@ -84,6 +93,7 @@
             /* ``````````````````````````````````*/
             
             perspective: 1200px; /* give perspective to grid */
+            transition: opacity 0.5s ease;
         }
 
         .card {
@@ -211,6 +221,8 @@
         /* my stuff for play card*/
         const playButton = document.getElementById('play-clicky');
 
+        const grid = document.getElementById('card-grid');
+
         let selected = null;
 
         cards.forEach(card => {
@@ -234,8 +246,8 @@
                 
             }
         );
-            /* reset tilt script*/
-            card.addEventListener('mouseleave', () => {
+        /* reset tilt script*/
+        card.addEventListener('mouseleave', () => {
             
                 /*event listener to detect when mouse leaves so that it snaps back 2 normal :3*/
                 
@@ -244,55 +256,47 @@
             }
         );
         
-         /*selection script*/
-         card.addEventListener('click', (e) => {
-           e.preventDefault();    /*prevent default link behavior so the animation can play*/
+        card.addEventListener('click', (e) => {
 
-           /* clear prev*/
-           cards.forEach(c => c.classList.remove('is-played')); 
+                e.preventDefault();
 
-           /* new selection*/
-           card.classList.add('is-played');
-           selected = card; /*store selected card*/
+                cards.forEach(c => c.classList.remove('selected'));
 
-           /*play! tun on :3333*/
-           card.classList.add('on');
-           playButton.disabled = false;
-         }
-         );
+                card.classList.add('selected');
+
+                selected = card;
+
+                playButton.disabled = false;
+                playButton.classList.add('on');
 
 
+            });
 
-         /*click da button...*/
-         playButton.addEventListener('click', () => {
+        });
+
+        playButton.addEventListener('click', () => {
+
+
             if (selected) {
-                
-                playButton.disabled = true; /*disable button after click*/
 
-                playButton.classList.remove('on'); 
+                playButton.disabled = true;
+                playButton.classList.remove('on');
 
-                grid.style.opacity = '0.3'; /*dim da grid*/
+                /*dim*/
+                grid.style.opacity = '0.3';
 
-                selected.classList.remove('selected'); 
-                selected.classList.add('is-played'); 
+                selected.classList.remove('selected');
+                selected.classList.add('is-played');
 
-                /*REDIRECT TO YOUTUBE VIDEO AFTER ANIMATION PLAYS SO THERES LIKE A DELAY*/
+                /*redirect delay*/
                 setTimeout(() => {
-                    /*TEMP REDIRECT BUT ITS BETTER THAN NOTHING*/
-                    window.location.href = 'https://www.youtube.com/watch?v=THUxlDJRHtY'; 
 
-                }, 1000); /*delay for animation to play before redirecting*/
+                    window.location.href = 'https://www.youtube.com/watch?v=THUxlDJRHtY'; /*              TEMP TEMP TEMP                               TEMP*/
 
+                }, 1000);
             }
-
-         }
-
-        );
-        }
-
-    );
+        });
     </script>
-    
 </body>
 
 </html>
