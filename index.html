@@ -18,7 +18,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100%;
+            min-height: 100vh;
             margin: 0;
 
             /*temp*/
@@ -105,6 +105,7 @@
             /* ``````````````````````````````````*/
             
             perspective: 1200px; /* give perspective to grid */
+            transition: opacity 0.5s ease;
         }
 
         .card {
@@ -224,6 +225,14 @@
 
     <!-- SCRIPT!!! STUFF HELP ME PLEAAASE!!!!! --> 
     <script>
+        
+        window.addEventListener('pageshowing', (event) => {
+            
+            if (event.persisted) { 
+                window.location.reload(); /*reload if back is useddd*/
+            }
+            
+        });
     /* I found this portion of the script in https://github.com/topics/hover-effects this collection*/
     /*card hover move 3d looking script*/
         
