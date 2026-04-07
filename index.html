@@ -26,7 +26,8 @@
             /*temp*/
 
             font-family: 'Courier New', Courier, monospace; 
-            overflow: hidden; /*for scrollingz*/
+            overflow-x: hidden; /*cant scroll horizontally*/
+            overflow-y: auto; /*mobile scrolling*/
         }
 
          /* PLAY BUTTON STUFF*/
@@ -98,10 +99,11 @@
             grid-template-columns: repeat(4, 120px); 
             grid-template-rows: repeat(3, 170px);
             margin-top: 50px;
+            max-width: 800px;
 
             /* FOR SOME GOD FORSAKEN REASON THIS LINE OF CODE IS NECCESSARY!!!! IDK WHY
             DO NOT TOUCH!*/
-            gap: 100px;  
+            gap: 5vw;  
             /* ``````````````````````````````````*/
             
             perspective: 1200px; /* give perspective to grid */
