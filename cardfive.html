@@ -9,22 +9,36 @@
         body {
 
             background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
             
         }
 
+        audio {
+            
+            margin-bottom: 30px;
+        }
+        
         .grid {
 
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            width: 100%;
+            justify-content: center;
 
         }
 
         .grid img {
 
-            width: 200px;
-            height: 200px;
+            width: auto;
+            height: 300px;
+            flex-grow: 1; /* fill row space */
             object-fit: cover;
+            border-radius: 6px;
+
         }
     </style>
 
