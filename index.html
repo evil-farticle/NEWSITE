@@ -296,14 +296,33 @@
 
                 e.preventDefault();
 
-                cards.forEach(c => c.classList.remove('selected'));
 
-                card.classList.add('selected');
+                // deselect script
+                if (card.classList.contains('selected')) {
 
-                selected = card;
+                    card.classList.remove('selected');
 
-                playButton.disabled = false;
-                playButton.classList.add('on');
+                    selected = null;
+
+                    playButton.disabled = true;
+                    playButton.classList.remove('on');
+
+                    return;
+                }
+
+                // if not selected, select it and deselect others
+                else {
+                    
+                    cards.forEach(c => c.classList.remove('selected'));
+
+                    card.classList.add('selected');
+
+                    selected = card;
+
+                    playButton.disabled = false;
+                    playButton.classList.add('on');
+
+                }
 
 
             });
