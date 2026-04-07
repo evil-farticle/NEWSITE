@@ -239,7 +239,7 @@
 
     <audio>
         
-        <source id = "menutheme" src = "https://evil-farticle.github.io/NEWSITE/data/audio/menutheme.mp4" loop autoplay>
+        <source id = "menutheme" src = "https://evil-farticle.github.io/NEWSITE/data/audio/menutheme.mp3" loop muted autoplay>
         
     </audio>
 
@@ -327,8 +327,11 @@
         /*card select script*/
         
         card.addEventListener('click', (e) => {
+
+                document.getElementById('menutheme').muted = false; /*music unmutes on click on website*/
             
                 e.preventDefault();
+            
 
 
                 // deselect script
