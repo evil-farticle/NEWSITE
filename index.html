@@ -272,6 +272,10 @@
     /* I found this portion of the script in https://github.com/topics/hover-effects this collection*/
     /*card hover move 3d looking script*/
         
+        /*ADDED FOR AUDIO!!!!!!*/
+        const clickySound = new Audio("https://evil-farticle.github.io/NEWSITE/data/audio/card.mp3");
+        const unclickySound = new Audio("https://evil-farticle.github.io/NEWSITE/data/audio/cardde.mp3");
+        
         const cards = document.querySelectorAll('.card'); /*changed this to match classes*/
 
         /* my stuff for play card*/
@@ -326,6 +330,9 @@
 
                     card.classList.remove('selected');
 
+                    unclickySound.currentTime = 0; /*reset time*/
+                    unclickySound.play()
+
                     selected = null;
 
                     playButton.disabled = true;
@@ -337,8 +344,11 @@
                 // if not selected, select it and deselect others
                 else {
                     
-                    cards.forEach(c => c.classList.remove('selected'));
+                    cards.forEach(c => c.classList.remove('selected')); /*for ech card selected*/
 
+                    clickySound.currentTime = 0;
+                    clickySound.play()
+                        
                     card.classList.add('selected');
 
                     selected = card;
