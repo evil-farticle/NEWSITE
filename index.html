@@ -71,6 +71,19 @@
             
         }
 
+        /* BACKGROUND VIDEO BECAUSE GIF WAS TOO LAGGY*/
+        /*i watched video for this*/
+        #bg-video {
+
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; 
+            object-fit: cover;
+        }
+
         /*selected card lift*/
         .selected {
 
@@ -223,6 +236,15 @@
 
 
 <body>
+
+
+
+    <video autoplay muted loop id="bg-video">
+
+        <source src="Background.mp4" type="video/mp4">
+
+    </video>
+
 <!-- div for grid and card classes for specific cards WHY DOES THIS COMMENT NEED TO BE DIFFEREBt?>!?>!!>--> 
     <div class="grid" id="card-grid"> 
   
