@@ -278,7 +278,8 @@
     /* I found this portion of the script in https://github.com/topics/hover-effects this collection*/
     /*card hover move 3d looking script*/
         
-        /*ADDED FOR AUDIO!!!!!!*/
+        /*ADDED FOR AUDIO!!!!!! FOrcing menu theme bc its not playing lawl!*/ 
+        const menuTheme = document.getElementById('menutheme');
         const clickySound = new Audio("https://evil-farticle.github.io/NEWSITE/data/audio/card.mp3");
         const unclickySound = new Audio("https://evil-farticle.github.io/NEWSITE/data/audio/cardde.mp3");
         
@@ -328,13 +329,18 @@
         
         card.addEventListener('click', (e) => {
 
-                document.getElementById('menutheme').muted = false; /*music unmutes on click on website*/
-            
+                
                 e.preventDefault();
             
 
 
                 // deselect script
+            
+                const document.getElementById('menutheme'); /*FORCES !!!! music unmutes on click on website*/
+            
+                menuTheme.muted = false;
+                menuTheme.play();
+            
                 if (card.classList.contains('selected')) {
 
                     card.classList.remove('selected');
