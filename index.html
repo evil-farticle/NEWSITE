@@ -341,6 +341,7 @@
                 if (card.classList.contains('selected')) {
 
                     card.classList.remove('selected');
+                    card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
 
                     unclickySound.currentTime = 0; /*reset time*/
                     unclickySound.play()
