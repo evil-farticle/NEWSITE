@@ -15,14 +15,13 @@
         body {
         
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 100%;
             margin: 0;
 
             /*temp*/
-            background-color: white;
+            background-color:white;
             /*temp*/
 
             font-family: 'Courier New', Courier, monospace; 
@@ -105,7 +104,6 @@
             /* ``````````````````````````````````*/
             
             perspective: 1200px; /* give perspective to grid */
-            transition: opacity 0.5s ease;
         }
 
         .card {
@@ -204,14 +202,14 @@
 <!-- div for grid and card classes for specific cards WHY DOES THIS COMMENT NEED TO BE DIFFEREBt?>!?>!!>--> 
     <div class="grid" id="card-grid"> 
   
-        <a href="#" class="card card-top-left">guhh</a>
-        <a href="#" class="card card-top-right">brap</a>
+        <a href="#" class="card card-top-left" data-url="https://evil-farticle.github.io/NEWSITE/cardone">guhh</a>
+        <a href="#" class="card card-top-right" data-url="https://evil-farticle.github.io/NEWSITE/cardtwo">brap</a>
     
-        <a href="#" class="card card-mid-left">fart</a>
-        <a href="#" class="card card-mid-right">poopie</a>
+        <a href="#" class="card card-mid-left" data-url="https://evil-farticle.github.io/NEWSITE/cardthree">fart</a>
+        <a href="#" class="card card-mid-right" data-url="https://evil-farticle.github.io/NEWSITE/cardfour">poopie</a>
     
-        <a href="#" class="card card-bot-left">t</a>
-        <a href="#" class="card card-bot-right">s</a>
+        <a href="#" class="card card-bot-left" data-url="https://evil-farticle.github.io/NEWSITE/cardfive">t</a>
+        <a href="#" class="card card-bot-right" data-url="https://evil-farticle.github.io/NEWSITE/cardsix">s</a>
         
     </div>
 
@@ -225,15 +223,6 @@
 
     <!-- SCRIPT!!! STUFF HELP ME PLEAAASE!!!!! --> 
     <script>
-        
-        /* DELETE L8TR IF NOT USED!!! TS TOO HAWD!~!!!! >:((((
-        
-            window.addEventListener('pageshowing', (event) => {
-            
-            if (event.persisted) { 
-                window.location.reload(); /*reload if back is useddd
-                */
-    
     /* I found this portion of the script in https://github.com/topics/hover-effects this collection*/
     /*card hover move 3d looking script*/
         
@@ -317,12 +306,21 @@
                 /*redirect delay*/
                 setTimeout(() => {
 
-                    window.location.href = 'https://www.youtube.com/watch?v=THUxlDJRHtY'; /*              TEMP TEMP TEMP                               TEMP*/
+                    const url = selected.getAttribute('data-url');
 
+                    //redirect to url if it exists
+
+                    if (url) {
+
+                        window.location.href = url;
+                    }
+                    
                 }, 1000);
             }
         });
+
     </script>
+
 </body>
 
 </html>
