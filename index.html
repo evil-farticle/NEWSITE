@@ -341,7 +341,7 @@
                 if (card.classList.contains('selected')) {
 
                     card.classList.remove('selected');
-                    card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
+                   
 
                     unclickySound.currentTime = 0; /*reset time*/
                     unclickySound.play()
@@ -358,6 +358,7 @@
                 else {
                     
                     cards.forEach(c => c.classList.remove('selected')); /*for ech card selected*/
+                    cards.forEach(c => card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`);
 
                     clickySound.currentTime = 0;
                     clickySound.play()
