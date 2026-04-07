@@ -84,7 +84,7 @@
             left: 50%;
             top: 50%;
             margin: 0;
-            transform: scale(2) rotate(0deg) !important;
+            transform: translate(-50%, -50%) scale(2) rotate(0deg) !important;
             z-index: 1000; /*bring played card to front*/
             transition: all 0.6s ease cubic-bezier(0.18, 0.89, 0.32, 1.28); 
         }
@@ -113,6 +113,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;  
 
             /*temp*/
             background-color: white;
@@ -150,17 +153,40 @@
         
         /*testing lining them up*/
 
-        .card-top-left { grid-column: 2; grid-row: 1; }
+        .card-top-left { grid-column: 2; grid-row: 1; 
 
-        .card-top-right { grid-column: 3; grid-row: 1; }
+            background-image: url(https://evil-farticle.github.io/NEWSITE/images/Skreeg.jpg)
 
-        .card-mid-left { grid-column: 1; grid-row: 2; }
+        }
 
-        .card-mid-right { grid-column: 4; grid-row: 2; }
+        .card-top-right { grid-column: 3; grid-row: 1; 
+        
+            background-image: url(https://evil-farticle.github.io/NEWSITE/images/cboy.jpg)
 
-        .card-bot-left { grid-column: 2; grid-row: 3; }
+        }
 
-        .card-bot-right { grid-column: 3; grid-row: 3; }
+        .card-mid-left { grid-column: 1; grid-row: 2; 
+        
+            background-image: url(https://evil-farticle.github.io/NEWSITE/images/joe.jpg)
+
+        }
+
+        .card-mid-right { grid-column: 4; grid-row: 2; 
+        
+            background-image: url(https://evil-farticle.github.io/NEWSITE/images/napkin.jpg)
+
+        }
+
+        .card-bot-left { grid-column: 2; grid-row: 3; 
+
+            background-image: url(https://evil-farticle.github.io/NEWSITE/images/satan.jpg)
+
+        }
+
+        .card-bot-right { grid-column: 3; grid-row: 3; 
+
+            background-image: url(https://evil-farticle.github.io/NEWSITE/images/paythb.jpg)
+        }
 
         /* hover lift */
 
@@ -203,14 +229,14 @@
 <!-- div for grid and card classes for specific cards WHY DOES THIS COMMENT NEED TO BE DIFFEREBt?>!?>!!>--> 
     <div class="grid" id="card-grid"> 
   
-        <a href="#" class="card card-top-left" data-url="https://evil-farticle.github.io/NEWSITE/cardone">guhh</a>
-        <a href="#" class="card card-top-right" data-url="https://evil-farticle.github.io/NEWSITE/carttwo">brap</a>
+        <a href="#" class="card card-top-left" data-url="https://evil-farticle.github.io/NEWSITE/cardone"></a>
+        <a href="#" class="card card-top-right" data-url="https://evil-farticle.github.io/NEWSITE/cardtwo"></a>
     
-        <a href="#" class="card card-mid-left" data-url="https://evil-farticle.github.io/NEWSITE/cardthree">fart</a>
-        <a href="#" class="card card-mid-right" data-url="https://evil-farticle.github.io/NEWSITE/cardfour">poopie</a>
+        <a href="#" class="card card-mid-left" data-url="https://evil-farticle.github.io/NEWSITE/cardthree"></a>
+        <a href="#" class="card card-mid-right" data-url="https://evil-farticle.github.io/NEWSITE/cardfour"></a>
     
-        <a href="#" class="card card-bot-left" data-url="https://evil-farticle.github.io/NEWSITE/cardfive">t</a>
-        <a href="#" class="card card-bot-right" data-url="https://evil-farticle.github.io/NEWSITE/cardsix">s</a>
+        <a href="#" class="card card-bot-left" data-url="https://evil-farticle.github.io/NEWSITE/cardfive"></a>
+        <a href="#" class="card card-bot-right" data-url="https://evil-farticle.github.io/NEWSITE/cardsix"></a>
         
     </div>
 
@@ -316,7 +342,7 @@
                         window.location.href = url;
                     }
                     
-                }, 600);
+                }, 1000);
             }
         });
 
